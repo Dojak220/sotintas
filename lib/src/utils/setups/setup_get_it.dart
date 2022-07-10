@@ -1,20 +1,20 @@
 import 'package:get_it/get_it.dart';
 
-import '../../domain/repositories/i_example_repository.dart';
-import '../../domain/usecases/get_example_uc.dart';
-import '../../external/datasources/example_datasource.dart';
-import '../../presentation/stores/example_store.dart';
-import '../../presentation/usecases/i_get_example_uc.dart';
-import '../dio_config.dart';
+import 'package:sotintas/src/domain/repositories/product_repository.dart';
+import 'package:sotintas/src/domain/usecases/get_products.dart';
+import 'package:sotintas/src/external/datasources/product_client.dart';
+import 'package:sotintas/src/presentation/stores/product_store.dart';
+import 'package:sotintas/src/presentation/usecases/i_get_products.dart';
+
+import 'package:sotintas/src/utils/dio_config.dart';
 
 void setupGetIt() {
   //Stores
-  GetIt.I.registerSingleton<ExampleStore>(ExampleStore());
+  GetIt.I.registerSingleton<ProductStore>(ProductStore());
 
   //Datasources
-  GetIt.I.registerSingleton<IExampleRepository>(
-      ExampleDatasource(DioConfig().dio));
+  GetIt.I.registerSingleton<ProductRepository>(ProductClient(DioConfig().dio));
 
   //Usecases
-  GetIt.I.registerSingleton<IGetExampleUseCase>(GetExampleUseCase());
+  GetIt.I.registerSingleton<IGetProducts>(GetProducts());
 }
