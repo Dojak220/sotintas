@@ -2,42 +2,72 @@ import 'package:flutter/material.dart';
 
 class Fonts {
   static TextStyle headline1 = const TextStyle(
-    fontSize: 32,
+    fontFamily: "OpenSans",
+    fontSize: 36,
     fontWeight: FontWeight.w700,
+    height: 49,
   );
 
   static TextStyle headline2 = const TextStyle(
-    fontSize: 28,
+    fontFamily: "OpenSans",
+    fontSize: 32,
     fontWeight: FontWeight.w700,
+    height: 43,
   );
 
   static TextStyle headline3 = const TextStyle(
-    fontSize: 24,
+    fontFamily: "OpenSans",
+    fontSize: 22,
     fontWeight: FontWeight.w700,
+    height: 26,
   );
 
   static TextStyle headline4 = const TextStyle(
-    fontSize: 20,
-    fontWeight: FontWeight.w700,
+    fontFamily: "OpenSans",
+    fontSize: 22,
+    fontWeight: FontWeight.w400,
+    height: 30,
   );
 
   static TextStyle headline5 = const TextStyle(
+    fontFamily: "OpenSans",
+    fontSize: 16,
+    fontWeight: FontWeight.w700,
+    height: 22,
+  );
+
+  static TextStyle text1 = const TextStyle(
+    fontFamily: "OpenSans",
     fontSize: 16,
     fontWeight: FontWeight.w400,
+    height: 20,
   );
 
-  static TextStyle headline6 = const TextStyle(
-    fontSize: 14,
+  static TextStyle text2 = const TextStyle(
+    fontFamily: "OpenSans",
+    fontSize: 16,
+    fontWeight: FontWeight.w200,
+    height: 22,
+  );
+
+  static TextStyle text3 = const TextStyle(
+    fontFamily: "OpenSans",
+    fontSize: 13,
     fontWeight: FontWeight.w400,
+    height: 18,
   );
 
-  static TextStyle caption = const TextStyle(
+  static TextStyle text4 = const TextStyle(
+    fontFamily: "OpenSans",
+    fontSize: 12,
     fontWeight: FontWeight.w400,
-    fontSize: 12,
+    height: 17,
   );
 
-  static TextStyle overline = const TextStyle(
-    fontWeight: FontWeight.w700,
-    fontSize: 12,
+  static TextStyle text5 = const TextStyle(
+    fontFamily: "OpenSans",
+    fontSize: 11,
+    fontWeight: FontWeight.w400,
+    height: 15,
   );
 }
