@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 class ExampleText extends StatelessWidget {
@@ -6,8 +5,6 @@ class ExampleText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Text(
-      "Example"
-    );
+    return const Text("Example");
   }
 }
