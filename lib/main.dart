@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:sotintas/src/presentation/views/login_page.dart';
 
-import 'src/presentation/views/example_screen.dart';
 import 'src/utils/custom_colors.dart';
 import 'src/utils/routes.dart';
 import 'src/utils/setups/setup_flavors.dart';
@@ -19,11 +19,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Só Tintas',
       theme: ThemeData(
         primaryColor: CustomColors.primary,
       ),
-      home: const ExampleScreen(),
+      home: const LoginPage(),
       routes: routes,
     );
   }
