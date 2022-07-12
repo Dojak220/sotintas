@@ -5,6 +5,7 @@ class CustomColors {
   static Color white = HexColor("#ffffff");
   static Color black = HexColor("#000000");
   static Color grey = HexColor("#0d2C3B8B");
+  static Color darkGrey = HexColor("#40404026");
   static Color purple = HexColor("#5b4da7");
 }
 

@@ -1,18 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:sotintas/src/utils/custom_colors.dart';
 
 class Fonts {
-  static TextStyle headline1 = const TextStyle(
+  static TextStyle headline0 = TextStyle(
     fontFamily: "OpenSans",
     fontSize: 36,
     fontWeight: FontWeight.w700,
-    height: 49,
+    color: CustomColors.black,
   );
 
-  static TextStyle headline2 = const TextStyle(
+  static TextStyle headline1 = const TextStyle(
     fontFamily: "OpenSans",
     fontSize: 32,
     fontWeight: FontWeight.w700,
     height: 43,
+  );
+
+  static TextStyle headline2 = TextStyle(
+    fontFamily: "OpenSans",
+    fontSize: 26,
+    fontWeight: FontWeight.w700,
+    color: CustomColors.black,
   );
 
   static TextStyle headline3 = const TextStyle(
