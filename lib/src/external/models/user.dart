@@ -4,16 +4,20 @@ part "user.g.dart";
 
 @JsonSerializable()
 class User {
-  final int id;
-  final String name;
+  final int? id;
+  final String? name;
   final String email;
-  final String pictureUrl;
+  final String password;
+  final String? token;
+  final String? pictureUrl;
 
   User({
-    required this.id,
-    required this.name,
+    this.id,
+    this.name,
     required this.email,
-    required this.pictureUrl,
+    required this.password,
+    this.token,
+    this.pictureUrl,
   });
 
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
@@ -23,5 +27,23 @@ class User {
   @override
   String toString() {
     return "$name ($email)";
+  }
+
+  User copyWith({
+    int? id,
+    String? name,
+    String? email,
+    String? password,
+    String? token,
+    String? pictureUrl,
+  }) {
+    return User(
+      id: id ?? this.id,
+      name: name ?? this.name,
+      email: email ?? this.email,
+      password: password ?? this.password,
+      token: token ?? this.token,
+      pictureUrl: pictureUrl ?? this.pictureUrl,
+    );
   }
 }

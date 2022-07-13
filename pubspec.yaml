@@ -23,7 +23,7 @@ dependencies:
   
 
   ##  utils
-  shared_preferences: 2.0.9
+  shared_preferences: 2.0.15
   retrofit: 3.0.0
   dio: 4.0.4
   form_field_validator: 1.1.0

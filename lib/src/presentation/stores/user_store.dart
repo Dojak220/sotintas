@@ -17,12 +17,19 @@ abstract class _UserStore with Store {
   bool loading = false;
 
   @action
-  Future<void> getUsers() async {
+  Future<bool> getUser(String email, String password) async {
     try {
       loading = true;
-      user = await GetIt.I.get<IGetUser>()();
+
+      user = User(email: email, password: password);
+
+      final token = await GetIt.I.get<IGetUser>()(email, password);
+      user = user!.copyWith(token: token);
+
+      return true;
     } catch (e, s) {
       printException("UserStore.getUser", e, s);
+      return false;
     } finally {
       loading = false;
     }

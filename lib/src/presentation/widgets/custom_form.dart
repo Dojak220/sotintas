@@ -1,23 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:form_field_validator/form_field_validator.dart';
+import 'package:sotintas/src/presentation/controllers/login_controller.dart';
 
 class CustomForm extends StatelessWidget {
   final String title;
   final List<FieldType> fields;
   final String buttonText;
-  final void Function()? onSubmit;
+  final LoginController controller;
+  final Function() onSubmit;
 
   const CustomForm({
     Key? key,
     required this.title,
     required this.fields,
     required this.buttonText,
+    required this.controller,
     required this.onSubmit,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final _formKey = GlobalKey<FormState>();
+
     return Form(
+      key: _formKey,
       autovalidateMode: AutovalidateMode.onUserInteraction,
       child: Column(
         children: [
@@ -27,28 +33,43 @@ class CustomForm extends StatelessWidget {
               case FieldType.name:
                 return const NameFormField();
               case FieldType.email:
-                return const EmailFormField();
+                return EmailFormField(controller: controller.emailController);
               case FieldType.password:
-                return const PasswordFormField();
+                return PasswordFormField(
+                  controller: controller.passwordController,
+                );
               case FieldType.confirmPassword:
-                return const PasswordFormField(fieldLabel: "Confirmar senha");
+                return PasswordFormField(
+                  fieldLabel: "Confirmar senha",
+                  controller: controller.passwordController,
+                );
               default:
                 return const Text("");
             }
           }).toList(),
           ElevatedButton(
-            onPressed: onSubmit,
+            onPressed: () => submitIfFormValid(_formKey),
             child: Text(buttonText),
           ),
         ],
       ),
     );
   }
+
+  void submitIfFormValid(
+    GlobalKey<FormState> formKey,
+  ) {
+    if (formKey.currentState!.validate()) {
+      onSubmit();
+    }
+  }
 }
 
 class EmailFormField extends StatelessWidget {
+  final TextEditingController controller;
   const EmailFormField({
     Key? key,
+    required this.controller,
   }) : super(key: key);
 
   @override
@@ -60,11 +81,11 @@ class EmailFormField extends StatelessWidget {
           decoration: const InputDecoration(
             border: OutlineInputBorder(),
           ),
+          controller: controller,
           validator: MultiValidator([
             RequiredValidator(errorText: "Campo obrigatório"),
             EmailValidator(errorText: "Email inválido"),
           ]),
-          onChanged: (value) => print(value),
         ),
       ],
     );
@@ -92,9 +113,14 @@ class NameFormField extends StatelessWidget {
 }
 
 class PasswordFormField extends StatefulWidget {
+  final TextEditingController controller;
+
   final String fieldLabel;
-  const PasswordFormField({Key? key, this.fieldLabel = "Senha"})
-      : super(key: key);
+  const PasswordFormField({
+    Key? key,
+    this.fieldLabel = "Senha",
+    required this.controller,
+  }) : super(key: key);
 
   @override
   State<PasswordFormField> createState() => _PasswordFormFieldState();
@@ -126,6 +152,7 @@ class _PasswordFormFieldState extends State<PasswordFormField> {
               }),
             ),
           ),
+          controller: widget.controller,
           validator: MultiValidator([
             RequiredValidator(errorText: "Campo obrigatório"),
             PatternValidator(

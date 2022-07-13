@@ -1,5 +1,3 @@
-import 'package:sotintas/src/external/models/user.dart';
-
 abstract class IGetUser {
-  Future<User> call();
+  Future<String> call(String email, String password);
 }
