@@ -6,7 +6,7 @@ import 'package:sotintas/src/utils/custom_colors.dart';
 class CartScreen extends StatefulWidget {
   const CartScreen({Key? key}) : super(key: key);
 
-  static const routeName = "store_screen";
+  static const routeName = "cart_screen";
 
   @override
   _CartScreenState createState() => _CartScreenState();

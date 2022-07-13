@@ -5,6 +5,8 @@ import 'package:sotintas/src/presentation/views/store_screen.dart';
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
+  static const routeName = "home_screen";
+
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }

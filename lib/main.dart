@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sotintas/src/presentation/views/login_page.dart';
+import 'package:sotintas/src/presentation/views/splash_screen.dart';
 
 import 'src/utils/custom_colors.dart';
 import 'src/utils/routes.dart';
@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primaryColor: CustomColors.primary,
       ),
-      home: const LoginPage(),
+      home: const SplashScreen(),
       routes: routes,
     );
   }
