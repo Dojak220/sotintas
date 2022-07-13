@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:form_field_validator/form_field_validator.dart';
 
 class CustomForm extends StatelessWidget {
   final String title;
@@ -17,6 +18,7 @@ class CustomForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Form(
+      autovalidateMode: AutovalidateMode.onUserInteraction,
       child: Column(
         children: [
           Text(title),
@@ -58,6 +60,11 @@ class EmailFormField extends StatelessWidget {
           decoration: const InputDecoration(
             border: OutlineInputBorder(),
           ),
+          validator: MultiValidator([
+            RequiredValidator(errorText: "Campo obrigatório"),
+            EmailValidator(errorText: "Email inválido"),
+          ]),
+          onChanged: (value) => print(value),
         ),
       ],
     );
@@ -96,6 +103,12 @@ class PasswordFormField extends StatefulWidget {
 class _PasswordFormFieldState extends State<PasswordFormField> {
   bool _obscureText = true;
 
+  final String atLeast1LowercasePattern = '(?=(.*[a-z]){1,})';
+  final String atLeast1UppercasePattern = '(?=(.*[A-Z]){1,})';
+  final String atLeast1NumberPattern = '(?=(.*[0-9]){1,})';
+  final String atLeast1SpecialCharacterPattern = '(?=(.*[!@#\$%^&*()_+]){1,})';
+  final String atLeast8CharactersPattern = '.{8,}';
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -113,6 +126,25 @@ class _PasswordFormFieldState extends State<PasswordFormField> {
               }),
             ),
           ),
+          validator: MultiValidator([
+            RequiredValidator(errorText: "Campo obrigatório"),
+            PatternValidator(
+              """^
+$atLeast1LowercasePattern
+$atLeast1UppercasePattern
+$atLeast1NumberPattern
+$atLeast1SpecialCharacterPattern
+$atLeast8CharactersPattern\$"""
+                  .replaceAll("\n", ""),
+              errorText: """
+A senha deve ter o seguinte padrão:
+-> 1 letra minúscula
+-> 1 letra maiúscula
+-> 1 número
+-> 1 caractere especial
+-> mínimo de 8 caracteres""",
+            ),
+          ]),
           obscureText: _obscureText,
         ),
       ],

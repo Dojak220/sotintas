@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sotintas/src/presentation/views/create_account_page.dart';
 import 'package:sotintas/src/presentation/views/home_screen.dart';
-import 'package:sotintas/src/presentation/views/store_screen.dart';
 import 'package:sotintas/src/presentation/widgets/custom_form.dart';
 import 'package:sotintas/src/presentation/widgets/sotintas_logo.dart';
 
