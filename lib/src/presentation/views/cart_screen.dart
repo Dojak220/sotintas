@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sotintas/src/presentation/views/cart/widgets/cart_product_card.dart';
 
 import 'package:sotintas/src/presentation/widgets/custom_appbar.dart';
 import 'package:sotintas/src/utils/custom_colors.dart';
@@ -25,7 +26,7 @@ class _CartScreenState extends State<CartScreen> {
               child: ListView.separated(
                 itemCount: 10,
                 itemBuilder: ((_, i) {
-                  return const InkList();
+                  return const CartProductCard();
                 }),
                 separatorBuilder: (context, index) =>
                     const SizedBox(height: 10),

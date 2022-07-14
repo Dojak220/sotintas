@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:sotintas/src/presentation/controllers/store_controller.dart';
-import 'package:sotintas/src/presentation/views/cart.dart';
+import 'package:sotintas/src/presentation/views/cart_screen.dart';
 import 'package:sotintas/src/presentation/views/store_screen.dart';
 
 class HomeScreen extends StatefulWidget {

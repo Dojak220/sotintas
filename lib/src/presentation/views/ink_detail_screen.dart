@@ -3,16 +3,16 @@ import 'package:sotintas/src/presentation/widgets/custom_appbar.dart';
 import 'package:sotintas/src/utils/class_helpers/quality.dart';
 import 'package:sotintas/src/utils/custom_colors.dart';
 
-class InkDetailPage extends StatefulWidget {
-  const InkDetailPage({Key? key}) : super(key: key);
+class InkDetailScreen extends StatefulWidget {
+  const InkDetailScreen({Key? key}) : super(key: key);
 
   static const routeName = "ink_detail_screen";
 
   @override
-  State<InkDetailPage> createState() => _InkDetailPageState();
+  State<InkDetailScreen> createState() => _InkDetailScreenState();
 }
 
-class _InkDetailPageState extends State<InkDetailPage> {
+class _InkDetailScreenState extends State<InkDetailScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
