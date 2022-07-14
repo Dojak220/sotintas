@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
+import 'package:sotintas/src/presentation/controllers/store_controller.dart';
 
 import 'package:sotintas/src/presentation/stores/product_store.dart';
 import 'package:sotintas/src/presentation/views/ink_detail_page.dart';
 import 'package:sotintas/src/presentation/widgets/custom_appbar.dart';
 
 class StoreScreen extends StatefulWidget {
-  const StoreScreen({Key? key}) : super(key: key);
+  final StoreController controller;
+  const StoreScreen({Key? key, required this.controller}) : super(key: key);
 
   static const routeName = "store_screen";
 

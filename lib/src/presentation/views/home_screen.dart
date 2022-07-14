@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
+import 'package:sotintas/src/presentation/controllers/store_controller.dart';
 import 'package:sotintas/src/presentation/views/cart.dart';
 import 'package:sotintas/src/presentation/views/store_screen.dart';
 
@@ -18,10 +20,10 @@ class _HomeScreenState extends State<HomeScreen> {
     fontSize: 30,
     fontWeight: FontWeight.bold,
   );
-  static const List<Widget> _widgetOptions = <Widget>[
-    StoreScreen(),
-    CartScreen(),
-    Center(
+  final List<Widget> _widgetOptions = <Widget>[
+    StoreScreen(controller: GetIt.I.get<StoreController>()),
+    const CartScreen(),
+    const Center(
       child: Text(
         'Index 2: Perfil',
         style: optionStyle,
