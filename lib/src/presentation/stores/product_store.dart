@@ -2,7 +2,10 @@ import 'package:get_it/get_it.dart';
 import 'package:mobx/mobx.dart';
 
 import 'package:sotintas/src/external/models/product.dart';
+import 'package:sotintas/src/presentation/usecases/i_get_delivery_free_products.dart';
+import 'package:sotintas/src/presentation/usecases/i_get_delivery_free_products_by_name.dart';
 import 'package:sotintas/src/presentation/usecases/i_get_products.dart';
+import 'package:sotintas/src/presentation/usecases/i_get_products_by_name.dart';
 import 'package:sotintas/src/utils/misc.dart';
 
 part 'product_store.g.dart';
@@ -33,6 +36,21 @@ abstract class _ProductStore with Store {
           : GetIt.I.get<IGetProductsByName>()(search));
     } catch (e, s) {
       printException("ProductStore.getProduct", e, s);
+    } finally {
+      loading = false;
+    }
+  }
+
+  @action
+  Future<void> filterByDeliveryFree([String? search]) async {
+    freeShippingFilter = true;
+    try {
+      loading = true;
+      products = await (search == null
+          ? GetIt.I.get<IGetDeliveryFreeProducts>()()
+          : GetIt.I.get<IGetDeliveryFreeProductsByName>()(search));
+    } catch (e, s) {
+      printException("ProductStore.filterByDeliveryFree", e, s);
     } finally {
       loading = false;
     }
