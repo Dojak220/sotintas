@@ -9,6 +9,7 @@ import 'package:sotintas/src/domain/usecases/get_products_by_name.dart';
 import 'package:sotintas/src/domain/usecases/get_user.dart';
 import 'package:sotintas/src/external/datasources/product_client.dart';
 import 'package:sotintas/src/external/datasources/user_client.dart';
+import 'package:sotintas/src/presentation/controllers/login_controller.dart';
 import 'package:sotintas/src/presentation/controllers/store_controller.dart';
 import 'package:sotintas/src/presentation/stores/product_store.dart';
 import 'package:sotintas/src/presentation/stores/user_store.dart';
@@ -26,6 +27,9 @@ void setupGetIt() {
   GetIt.I.registerSingleton<UserStore>(UserStore());
 
   //Controllers
+  GetIt.I.registerSingleton<LoginController>(
+    LoginController(GetIt.I.get<UserStore>()),
+  );
   GetIt.I.registerSingleton<StoreController>(
     StoreController(GetIt.I.get<ProductStore>()),
   );

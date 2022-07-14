@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sotintas/src/presentation/views/home_screen.dart';
-import 'package:sotintas/src/presentation/views/login_page.dart';
+import 'package:sotintas/src/presentation/views/login/login_screen.dart';
 import 'package:sotintas/src/utils/authentication.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -22,7 +22,7 @@ class _SplashScreenState extends State<SplashScreen> {
       final isAuth = value[0];
       isAuth
           ? Navigator.of(context).pushReplacementNamed(HomeScreen.routeName)
-          : Navigator.of(context).pushReplacementNamed(LoginPage.routeName);
+          : Navigator.of(context).pushReplacementNamed(LoginScreen.routeName);
     });
     super.initState();
   }

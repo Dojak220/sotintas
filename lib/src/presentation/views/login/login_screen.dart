@@ -1,29 +1,26 @@
 import 'package:flutter/material.dart';
-import 'package:get_it/get_it.dart';
 import 'package:sotintas/src/presentation/controllers/login_controller.dart';
-import 'package:sotintas/src/presentation/stores/user_store.dart';
-import 'package:sotintas/src/presentation/views/create_account_page.dart';
+import 'package:sotintas/src/presentation/views/create_account_screen.dart';
 import 'package:sotintas/src/presentation/views/home_screen.dart';
 import 'package:sotintas/src/presentation/widgets/custom_form.dart';
 import 'package:sotintas/src/presentation/widgets/sotintas_logo.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({Key? key}) : super(key: key);
-
+class LoginScreen extends StatefulWidget {
   static const routeName = "login_screen";
+  final LoginController controller;
+
+  const LoginScreen({Key? key, required this.controller}) : super(key: key);
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<LoginScreen> createState() => _LoginScreenState();
 }
 
-/// This class is the state of the [LoginPage] widget.
-class _LoginPageState extends State<LoginPage> {
-  final controller = LoginController(GetIt.I.get<UserStore>());
-
+/// This class is the state of the [LoginScreen] widget.
+class _LoginScreenState extends State<LoginScreen> {
   @override
   void dispose() {
-    controller.emailController.dispose();
-    controller.passwordController.dispose();
+    widget.controller.emailController.dispose();
+    widget.controller.passwordController.dispose();
     super.dispose();
   }
 
@@ -36,7 +33,7 @@ class _LoginPageState extends State<LoginPage> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             const SoTintasLogo(),
-            LoginForm(controller: controller),
+            LoginForm(controller: widget.controller),
             const CreateAccountButton(),
           ],
         ),

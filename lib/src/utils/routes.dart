@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
+import 'package:sotintas/src/presentation/controllers/login_controller.dart';
 import 'package:sotintas/src/presentation/controllers/store_controller.dart';
 import 'package:sotintas/src/presentation/views/cart.dart';
 import 'package:sotintas/src/presentation/views/create_account_page.dart';
@@ -11,7 +12,8 @@ import 'package:sotintas/src/presentation/views/store_screen.dart';
 
 final Map<String, WidgetBuilder> routes = {
   SplashScreen.routeName: (_) => const SplashScreen(),
-  LoginPage.routeName: (_) => const LoginPage(),
+  LoginScreen.routeName: (_) =>
+      LoginScreen(controller: GetIt.I.get<LoginController>()),
   CreateAccountScreen.routeName: (_) => const CreateAccountScreen(),
   HomeScreen.routeName: (_) => const HomeScreen(),
   StoreScreen.routeName: (_) => StoreScreen(
