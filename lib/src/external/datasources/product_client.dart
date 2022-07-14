@@ -10,6 +10,10 @@ abstract class ProductClient implements ProductRepository {
   factory ProductClient(Dio dio, {String baseUrl}) = _ProductClient;
 
   @override
-  @GET("/products")
+  @GET("/paint?page=1&limit=10")
   Future<List<Product>> getProducts();
+
+  @override
+  @GET("/paint?page=1&limit=10&name={name}")
+  Future<List<Product>> getProductsByName(@Path() String name);
 }

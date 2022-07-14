@@ -24,5 +24,6 @@ void setupGetIt() {
 
   //Usecases
   GetIt.I.registerSingleton<IGetProducts>(GetProducts());
+  GetIt.I.registerSingleton<IGetProductsByName>(GetProductsByName());
   GetIt.I.registerSingleton<IGetUser>(GetUser());
 }

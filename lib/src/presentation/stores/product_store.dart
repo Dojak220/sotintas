@@ -13,6 +13,9 @@ abstract class _ProductStore with Store {
   @observable
   List<Product?>? products;
 
+  @computed
+  int get productCount => products!.length;
+
   @observable
   bool loading = false;
 

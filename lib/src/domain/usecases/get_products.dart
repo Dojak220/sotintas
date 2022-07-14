@@ -6,6 +6,6 @@ import 'package:sotintas/src/presentation/usecases/i_get_products.dart';
 class GetProducts implements IGetProducts {
   @override
   Future<List<Product>> call() async {
-    return GetIt.I.get<ProductRepository>().getProducts();
+    return await GetIt.I.get<ProductRepository>().getProducts();
   }
 }
