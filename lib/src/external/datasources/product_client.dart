@@ -16,4 +16,8 @@ abstract class ProductClient implements ProductRepository {
   @override
   @GET("/paint?page=1&limit=10&name={name}")
   Future<List<Product>> getProductsByName(@Path() String name);
+
+  @override
+  @GET("/paint?page=1&limit=10&deliveryFree=true")
+  Future<List<Product>> getDeliveryFreeProducts();
 }

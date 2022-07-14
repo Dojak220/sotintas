@@ -17,13 +17,20 @@ abstract class _ProductStore with Store {
   int get productCount => products!.length;
 
   @observable
+  bool freeShippingFilter = false;
+
+  @observable
   bool loading = false;
 
   @action
-  Future<void> getProducts() async {
+  Future<void> getProducts([String? search]) async {
+    freeShippingFilter = false;
+
     try {
       loading = true;
-      products = await GetIt.I.get<IGetProducts>()();
+      products = await (search == null
+          ? GetIt.I.get<IGetProducts>()()
+          : GetIt.I.get<IGetProductsByName>()(search));
     } catch (e, s) {
       printException("ProductStore.getProduct", e, s);
     } finally {
