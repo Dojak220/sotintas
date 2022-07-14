@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:sotintas/src/presentation/views/home_screen.dart';
 import 'package:sotintas/src/presentation/views/login_page.dart';
@@ -21,11 +20,9 @@ class _SplashScreenState extends State<SplashScreen> {
       Future.delayed(const Duration(seconds: 2), () => true),
     ]).then((value) {
       final isAuth = value[0];
-      kDebugMode
-          ? Navigator.of(context).pushReplacementNamed(LoginPage.routeName)
-          : isAuth
-              ? Navigator.of(context).pushReplacementNamed(HomeScreen.routeName)
-              : Navigator.of(context).pushReplacementNamed(LoginPage.routeName);
+      isAuth
+          ? Navigator.of(context).pushReplacementNamed(HomeScreen.routeName)
+          : Navigator.of(context).pushReplacementNamed(LoginPage.routeName);
     });
     super.initState();
   }

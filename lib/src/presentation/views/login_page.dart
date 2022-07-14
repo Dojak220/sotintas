@@ -65,7 +65,7 @@ class LoginForm extends StatelessWidget {
       controller.emailController.text,
       controller.passwordController.text,
     );
-    if (!isAuth) {
+    if (isAuth) {
       Navigator.of(context).pushReplacement(
         MaterialPageRoute<void>(
           builder: (BuildContext context) => const HomeScreen(),
