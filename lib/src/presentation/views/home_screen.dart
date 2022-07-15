@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:sotintas/src/presentation/controllers/store_controller.dart';
+import 'package:sotintas/src/presentation/stores/user_store.dart';
 import 'package:sotintas/src/presentation/views/cart/cart_screen.dart';
+import 'package:sotintas/src/presentation/views/profile_screen.dart';
 import 'package:sotintas/src/presentation/views/store/store_screen.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -16,19 +18,10 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   int _selectedIndex = 0;
 
-  static const TextStyle optionStyle = TextStyle(
-    fontSize: 30,
-    fontWeight: FontWeight.bold,
-  );
   final List<Widget> _widgetOptions = <Widget>[
     StoreScreen(controller: GetIt.I.get<StoreController>()),
     const CartScreen(),
-    const Center(
-      child: Text(
-        'Index 2: Perfil',
-        style: optionStyle,
-      ),
-    ),
+    ProfileScreen(store: GetIt.I.get<UserStore>()),
   ];
 
   void _onItemTapped(int index) {

@@ -6,18 +6,18 @@ part "user.g.dart";
 class User {
   final int? id;
   final String? name;
-  final String email;
-  final String password;
+  final String? email;
+  final String? password;
   final String? token;
-  final String? pictureUrl;
+  final String? avatar;
 
   User({
     this.id,
     this.name,
-    required this.email,
-    required this.password,
+    this.email,
+    this.password,
     this.token,
-    this.pictureUrl,
+    this.avatar,
   });
 
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
@@ -35,7 +35,7 @@ class User {
     String? email,
     String? password,
     String? token,
-    String? pictureUrl,
+    String? avatar,
   }) {
     return User(
       id: id ?? this.id,
@@ -43,7 +43,7 @@ class User {
       email: email ?? this.email,
       password: password ?? this.password,
       token: token ?? this.token,
-      pictureUrl: pictureUrl ?? this.pictureUrl,
+      avatar: avatar ?? this.avatar,
     );
   }
 }

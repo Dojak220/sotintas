@@ -7,6 +7,7 @@ import 'package:sotintas/src/domain/usecases/get_delivery_free_products_by_name.
 import 'package:sotintas/src/domain/usecases/get_products.dart';
 import 'package:sotintas/src/domain/usecases/get_products_by_name.dart';
 import 'package:sotintas/src/domain/usecases/get_user.dart';
+import 'package:sotintas/src/domain/usecases/get_user_profile.dart';
 import 'package:sotintas/src/external/datasources/product_client.dart';
 import 'package:sotintas/src/external/datasources/user_client.dart';
 import 'package:sotintas/src/presentation/controllers/login_controller.dart';
@@ -18,6 +19,7 @@ import 'package:sotintas/src/presentation/usecases/i_get_delivery_free_products_
 import 'package:sotintas/src/presentation/usecases/i_get_products.dart';
 import 'package:sotintas/src/presentation/usecases/i_get_products_by_name.dart';
 import 'package:sotintas/src/presentation/usecases/i_get_user.dart';
+import 'package:sotintas/src/presentation/usecases/i_get_user_profile.dart';
 
 import 'package:sotintas/src/utils/dio_config.dart';
 
@@ -48,4 +50,5 @@ void setupGetIt() {
     GetDeliveryFreeProductsByName(),
   );
   GetIt.I.registerSingleton<IGetUser>(GetUser());
+  GetIt.I.registerSingleton<IGetUserProfile>(GetUserProfile());
 }

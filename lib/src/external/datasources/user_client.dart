@@ -11,4 +11,8 @@ abstract class UserClient implements UserRepository {
   @override
   @GET("/login")
   Future<String> getUserToken(@Body() String email, @Body() String password);
+
+  @override
+  @GET("/profile")
+  Future<Map<String, String>> getUserProfile();
 }

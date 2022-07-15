@@ -9,11 +9,11 @@ class Fonts {
     color: CustomColors.black,
   );
 
-  static TextStyle headline1 = const TextStyle(
+  static TextStyle headline1 = TextStyle(
     fontFamily: "OpenSans",
     fontSize: 32,
     fontWeight: FontWeight.w700,
-    height: 43,
+    color: CustomColors.black,
   );
 
   static TextStyle headline2 = TextStyle(
@@ -23,59 +23,59 @@ class Fonts {
     color: CustomColors.black,
   );
 
-  static TextStyle headline3 = const TextStyle(
+  static TextStyle headline3 = TextStyle(
     fontFamily: "OpenSans",
     fontSize: 22,
     fontWeight: FontWeight.w700,
-    height: 26,
+    color: CustomColors.black,
   );
 
-  static TextStyle headline4 = const TextStyle(
+  static TextStyle headline4 = TextStyle(
     fontFamily: "OpenSans",
     fontSize: 22,
     fontWeight: FontWeight.w400,
-    height: 30,
+    color: CustomColors.black,
   );
 
-  static TextStyle headline5 = const TextStyle(
+  static TextStyle headline5 = TextStyle(
     fontFamily: "OpenSans",
     fontSize: 16,
     fontWeight: FontWeight.w700,
-    height: 22,
+    color: CustomColors.black,
   );
 
-  static TextStyle text1 = const TextStyle(
+  static TextStyle text1 = TextStyle(
     fontFamily: "OpenSans",
     fontSize: 16,
     fontWeight: FontWeight.w400,
-    height: 20,
+    color: CustomColors.black,
   );
 
-  static TextStyle text2 = const TextStyle(
+  static TextStyle text2 = TextStyle(
     fontFamily: "OpenSans",
     fontSize: 16,
     fontWeight: FontWeight.w200,
-    height: 22,
+    color: CustomColors.black,
   );
 
-  static TextStyle text3 = const TextStyle(
+  static TextStyle text3 = TextStyle(
     fontFamily: "OpenSans",
     fontSize: 13,
     fontWeight: FontWeight.w400,
-    height: 18,
+    color: CustomColors.black,
   );
 
-  static TextStyle text4 = const TextStyle(
+  static TextStyle text4 = TextStyle(
     fontFamily: "OpenSans",
     fontSize: 12,
     fontWeight: FontWeight.w400,
-    height: 17,
+    color: CustomColors.black,
   );
 
-  static TextStyle text5 = const TextStyle(
+  static TextStyle text5 = TextStyle(
     fontFamily: "OpenSans",
     fontSize: 11,
     fontWeight: FontWeight.w400,
-    height: 15,
+    color: CustomColors.black,
   );
 }
