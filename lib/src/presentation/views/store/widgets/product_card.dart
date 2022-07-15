@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
 import 'package:sotintas/src/external/models/product.dart';
+import 'package:sotintas/src/presentation/controllers/product_detail_controller.dart';
+import 'package:sotintas/src/presentation/stores/product_store.dart';
 import 'package:sotintas/src/presentation/views/ink_detail/ink_detail_screen.dart';
 
 class ProductCard extends StatelessWidget {
@@ -31,7 +34,10 @@ class ProductCard extends StatelessWidget {
       ),
       onTap: () => Navigator.of(context).push(
         MaterialPageRoute<void>(
-          builder: (BuildContext context) => const InkDetailScreen(),
+          builder: (BuildContext context) => ProductDetailScreen(
+            product: product,
+            controller: ProductDetailController(GetIt.I.get<ProductStore>()),
+          ),
         ),
       ),
     );

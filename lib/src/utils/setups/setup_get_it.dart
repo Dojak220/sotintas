@@ -5,6 +5,7 @@ import 'package:sotintas/src/domain/repositories/user_repository.dart';
 import 'package:sotintas/src/domain/usecases/get_cart_products.dart';
 import 'package:sotintas/src/domain/usecases/get_delivery_free_products.dart';
 import 'package:sotintas/src/domain/usecases/get_delivery_free_products_by_name.dart';
+import 'package:sotintas/src/domain/usecases/get_product_qualities.dart';
 import 'package:sotintas/src/domain/usecases/get_products.dart';
 import 'package:sotintas/src/domain/usecases/get_products_by_name.dart';
 import 'package:sotintas/src/domain/usecases/get_user.dart';
@@ -13,12 +14,14 @@ import 'package:sotintas/src/external/datasources/product_client.dart';
 import 'package:sotintas/src/external/datasources/user_client.dart';
 import 'package:sotintas/src/presentation/controllers/cart_controller.dart';
 import 'package:sotintas/src/presentation/controllers/login_controller.dart';
+import 'package:sotintas/src/presentation/controllers/product_detail_controller.dart';
 import 'package:sotintas/src/presentation/controllers/store_controller.dart';
 import 'package:sotintas/src/presentation/stores/product_store.dart';
 import 'package:sotintas/src/presentation/stores/user_store.dart';
 import 'package:sotintas/src/presentation/usecases/i_get_cart_products.dart';
 import 'package:sotintas/src/presentation/usecases/i_get_delivery_free_products.dart';
 import 'package:sotintas/src/presentation/usecases/i_get_delivery_free_products_by_name.dart';
+import 'package:sotintas/src/presentation/usecases/i_get_product_qualities.dart';
 import 'package:sotintas/src/presentation/usecases/i_get_products.dart';
 import 'package:sotintas/src/presentation/usecases/i_get_products_by_name.dart';
 import 'package:sotintas/src/presentation/usecases/i_get_user.dart';
@@ -41,6 +44,9 @@ void setupGetIt() {
   GetIt.I.registerSingleton<CartController>(
     CartController(GetIt.I.get<ProductStore>()),
   );
+  GetIt.I.registerSingleton<ProductDetailController>(
+    ProductDetailController(GetIt.I.get<ProductStore>()),
+  );
 
   /// Datasources
   GetIt.I.registerSingleton<ProductRepository>(ProductClient(DioConfig().dio));
@@ -59,4 +65,6 @@ void setupGetIt() {
   GetIt.I.registerSingleton<IGetUserProfile>(GetUserProfile());
 
   GetIt.I.registerSingleton<IGetCartProducts>(GetCartProducts());
+  
+  GetIt.I.registerSingleton<IGetProductQualities>(GetProductQualities());
 }

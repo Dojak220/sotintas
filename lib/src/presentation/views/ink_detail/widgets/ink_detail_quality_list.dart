@@ -1,17 +1,22 @@
-
 import 'package:flutter/material.dart';
-import 'package:sotintas/src/utils/class_helpers/quality.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:sotintas/src/presentation/controllers/product_detail_controller.dart';
 import 'package:sotintas/src/utils/custom_colors.dart';
 
-class InkDetailQualityList extends StatelessWidget {
-  InkDetailQualityList({Key? key}) : super(key: key);
+class InkDetailQualityList extends StatefulWidget {
+  final String productId;
+  final ProductDetailController controller;
+  const InkDetailQualityList({
+    Key? key,
+    required this.productId,
+    required this.controller,
+  }) : super(key: key);
 
-  final List<Quality> _qualities = [
-    Quality(const Icon(Icons.brush), "Fácil de aplicar"),
-    Quality(const Icon(Icons.air), "Não deixa cheiro"),
-    Quality(const Icon(Icons.check), "É só abrir, mexer e pintar"),
-  ];
+  @override
+  State<InkDetailQualityList> createState() => _InkDetailQualityListState();
+}
 
+class _InkDetailQualityListState extends State<InkDetailQualityList> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -26,20 +31,29 @@ class InkDetailQualityList extends StatelessWidget {
       child: Column(
         children: [
           const Text("Diferenciais"),
-          SizedBox(
-            height: 100,
-            child: ListView.separated(
-              itemCount: 3,
-              itemBuilder: (context, index) {
-                return Row(
-                  children: [
-                    _qualities[index].icon,
-                    const SizedBox(width: 10),
-                    Text(_qualities[index].name),
-                  ],
-                );
-              },
-              separatorBuilder: (context, index) => const SizedBox(height: 10),
+          Observer(
+            builder: (context) => SizedBox(
+              height: 100,
+              child: (widget.controller.isFetchingQualities)
+                  ? const Center(child: CircularProgressIndicator())
+                  : widget.controller.productStore.productQualityCount == 0
+                      ? const Center(child: Text("Nada encontrado"))
+                      : ListView.separated(
+                          itemCount: widget.controller.productQualityCount,
+                          itemBuilder: (context, index) {
+                            return Row(
+                              children: [
+                                Text(widget
+                                    .controller.productQualities![index].id),
+                                const SizedBox(width: 10),
+                                Text(widget
+                                    .controller.productQualities![index].name),
+                              ],
+                            );
+                          },
+                          separatorBuilder: (context, index) =>
+                              const SizedBox(height: 10),
+                        ),
             ),
           )
         ],

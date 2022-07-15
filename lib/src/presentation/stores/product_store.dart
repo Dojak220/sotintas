@@ -1,9 +1,13 @@
 import 'package:get_it/get_it.dart';
 import 'package:mobx/mobx.dart';
+import 'package:sotintas/src/external/models/cart_item.dart';
 
 import 'package:sotintas/src/external/models/product.dart';
+import 'package:sotintas/src/external/models/quality.dart';
+import 'package:sotintas/src/presentation/usecases/i_get_cart_products.dart';
 import 'package:sotintas/src/presentation/usecases/i_get_delivery_free_products.dart';
 import 'package:sotintas/src/presentation/usecases/i_get_delivery_free_products_by_name.dart';
+import 'package:sotintas/src/presentation/usecases/i_get_product_qualities.dart';
 import 'package:sotintas/src/presentation/usecases/i_get_products.dart';
 import 'package:sotintas/src/presentation/usecases/i_get_products_by_name.dart';
 import 'package:sotintas/src/utils/misc.dart';
@@ -23,8 +27,10 @@ abstract class _ProductStore with Store {
   @computed
   int get cartProductCount => cartProducts!.length;
 
+  @observable
+  List<Quality>? productQualities;
   @computed
-  int get productCount => products!.length;
+  int get productQualityCount => productQualities!.length;
 
   @observable
   bool freeShippingFilter = false;
@@ -33,6 +39,8 @@ abstract class _ProductStore with Store {
   bool loadingProducts = false;
   @observable
   bool loadingCartProducts = false;
+  @observable
+  bool loadingQualities = false;
 
   @action
   Future<void> getProducts([String? search]) async {

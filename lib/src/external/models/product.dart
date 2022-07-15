@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:json_annotation/json_annotation.dart';
 
-import 'package:sotintas/src/utils/class_helpers/quality.dart';
+import 'package:sotintas/src/external/models/quality.dart';
 
 part "product.g.dart";
 
