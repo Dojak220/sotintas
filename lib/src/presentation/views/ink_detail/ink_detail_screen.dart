@@ -5,8 +5,6 @@ import 'package:sotintas/src/presentation/views/ink_detail/widgets/ink_detail_qu
 import 'package:sotintas/src/presentation/views/ink_detail/widgets/ink_images_carousel.dart';
 import 'package:sotintas/src/presentation/views/ink_detail/widgets/support_buttons_row.dart';
 import 'package:sotintas/src/presentation/widgets/custom_appbar.dart';
-import 'package:sotintas/src/utils/class_helpers/quality.dart';
-import 'package:sotintas/src/utils/custom_colors.dart';
 
 class ProductDetailScreen extends StatefulWidget {
   final ProductDetailController controller;
@@ -27,6 +25,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
   @override
   void initState() {
     widget.controller.getQualities(widget.product.id);
+    widget.controller.getImages(widget.product.id);
 
     super.initState();
   }
@@ -37,6 +36,12 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
       appBar: const CustomAppBar(title: "Opções de tintas"),
       body: Column(
         children: [
+          InkDetailHeader(title: widget.product.name),
+          InkDetailBody(
+            productId: widget.product.id,
+            controller: widget.controller,
+          ),
+          const InkDetailFooter(),
         ],
       ),
     );
@@ -67,13 +72,12 @@ class InkDetailBody extends StatefulWidget {
 }
 
 class _InkDetailBodyState extends State<InkDetailBody> {
-  final _pageController = PageController(viewportFraction: 0.8);
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        InkImagesCarousel(pageController: _pageController),
+        InkImagesCarousel(controller: widget.controller),
         const SupportButtonsRow(),
         InkDetailQualityList(
           productId: widget.productId,

@@ -3,10 +3,12 @@ import 'package:mobx/mobx.dart';
 import 'package:sotintas/src/external/models/cart_item.dart';
 
 import 'package:sotintas/src/external/models/product.dart';
+import 'package:sotintas/src/external/models/product_image.dart';
 import 'package:sotintas/src/external/models/quality.dart';
 import 'package:sotintas/src/presentation/usecases/i_get_cart_products.dart';
 import 'package:sotintas/src/presentation/usecases/i_get_delivery_free_products.dart';
 import 'package:sotintas/src/presentation/usecases/i_get_delivery_free_products_by_name.dart';
+import 'package:sotintas/src/presentation/usecases/i_get_product_images.dart';
 import 'package:sotintas/src/presentation/usecases/i_get_product_qualities.dart';
 import 'package:sotintas/src/presentation/usecases/i_get_products.dart';
 import 'package:sotintas/src/presentation/usecases/i_get_products_by_name.dart';
@@ -33,6 +35,11 @@ abstract class _ProductStore with Store {
   int get productQualityCount => productQualities!.length;
 
   @observable
+  List<ProductImage>? productImages;
+  @computed
+  int get productImageCount => productImages!.length;
+
+  @observable
   bool freeShippingFilter = false;
 
   @observable
@@ -41,6 +48,8 @@ abstract class _ProductStore with Store {
   bool loadingCartProducts = false;
   @observable
   bool loadingQualities = false;
+  @observable
+  bool loadingImages = false;
 
   @action
   Future<void> getProducts([String? search]) async {
@@ -98,6 +107,20 @@ abstract class _ProductStore with Store {
       print(s);
     } finally {
       loadingQualities = false;
+    }
+  }
+
+  @action
+  Future<void> getImages(String productId) async {
+    try {
+      loadingImages = true;
+      productImages = await GetIt.I.get<IGetProductImages>()(productId);
+    } catch (e, s) {
+      // printException("ProductStore.getQualities", e, s);
+      print(e);
+      print(s);
+    } finally {
+      loadingImages = false;
     }
   }
 

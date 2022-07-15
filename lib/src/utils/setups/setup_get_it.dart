@@ -5,6 +5,7 @@ import 'package:sotintas/src/domain/repositories/user_repository.dart';
 import 'package:sotintas/src/domain/usecases/get_cart_products.dart';
 import 'package:sotintas/src/domain/usecases/get_delivery_free_products.dart';
 import 'package:sotintas/src/domain/usecases/get_delivery_free_products_by_name.dart';
+import 'package:sotintas/src/domain/usecases/get_product_images.dart';
 import 'package:sotintas/src/domain/usecases/get_product_qualities.dart';
 import 'package:sotintas/src/domain/usecases/get_products.dart';
 import 'package:sotintas/src/domain/usecases/get_products_by_name.dart';
@@ -21,6 +22,7 @@ import 'package:sotintas/src/presentation/stores/user_store.dart';
 import 'package:sotintas/src/presentation/usecases/i_get_cart_products.dart';
 import 'package:sotintas/src/presentation/usecases/i_get_delivery_free_products.dart';
 import 'package:sotintas/src/presentation/usecases/i_get_delivery_free_products_by_name.dart';
+import 'package:sotintas/src/presentation/usecases/i_get_product_images.dart';
 import 'package:sotintas/src/presentation/usecases/i_get_product_qualities.dart';
 import 'package:sotintas/src/presentation/usecases/i_get_products.dart';
 import 'package:sotintas/src/presentation/usecases/i_get_products_by_name.dart';
@@ -67,4 +69,5 @@ void setupGetIt() {
   GetIt.I.registerSingleton<IGetCartProducts>(GetCartProducts());
   
   GetIt.I.registerSingleton<IGetProductQualities>(GetProductQualities());
+  GetIt.I.registerSingleton<IGetProductImages>(GetProductImages());
 }

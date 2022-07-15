@@ -1,5 +1,6 @@
 import 'package:sotintas/src/external/models/cart_item.dart';
 import 'package:sotintas/src/external/models/product.dart';
+import 'package:sotintas/src/external/models/product_image.dart';
 import 'package:sotintas/src/external/models/quality.dart';
 
 abstract class ProductRepository {
@@ -11,6 +12,8 @@ abstract class ProductRepository {
 
   /// Product
   Future<List<Quality>> getProductQualities(String productId);
+  Future<List<ProductImage>> getProductImages(String productId);
+
   /// Cart
   Future<List<CartItem>> getCartProducts();
 }
