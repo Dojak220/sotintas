@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sotintas/src/external/models/product.dart';
-import 'package:sotintas/src/presentation/views/ink_detail_screen.dart';
+import 'package:sotintas/src/presentation/views/ink_detail/ink_detail_screen.dart';
 
 class ProductCard extends StatelessWidget {
   final Product product;

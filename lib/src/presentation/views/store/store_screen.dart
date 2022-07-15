@@ -41,7 +41,7 @@ class _StoreScreenState extends State<StoreScreen> {
                   child: (widget.controller.isFetchingProducts)
                       ? const Center(child: CircularProgressIndicator())
                       : widget.controller.productStore.productCount == 0
-                          ? const Center(child: Text("Sem produtos à venda"))
+                          ? const Center(child: Text("Nada encontrado"))
                           : ProductsListView(controller: widget.controller),
                 );
               },

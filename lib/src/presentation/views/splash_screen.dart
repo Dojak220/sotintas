@@ -17,7 +17,6 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     Future.wait<bool>([
       Authentication.authenticated(),
-      Future.delayed(const Duration(seconds: 2), () => true),
     ]).then((value) {
       final isAuth = value[0];
       isAuth
