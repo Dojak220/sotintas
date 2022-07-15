@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
+import 'package:sotintas/src/presentation/controllers/cart_controller.dart';
 import 'package:sotintas/src/presentation/controllers/store_controller.dart';
 import 'package:sotintas/src/presentation/stores/user_store.dart';
 import 'package:sotintas/src/presentation/views/cart/cart_screen.dart';
@@ -20,7 +21,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   final List<Widget> _widgetOptions = <Widget>[
     StoreScreen(controller: GetIt.I.get<StoreController>()),
-    const CartScreen(),
+    CartScreen(controller: GetIt.I.get<CartController>()),
     ProfileScreen(store: GetIt.I.get<UserStore>()),
   ];
 

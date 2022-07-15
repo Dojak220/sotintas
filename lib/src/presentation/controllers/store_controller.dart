@@ -10,7 +10,7 @@ class StoreController {
   final searchController = TextEditingController();
 
   List<Product?>? get products => productStore.products;
-  bool get isFetchingProducts => productStore.loading;
+  bool get isFetchingProducts => productStore.loadingProducts;
   int get productCount => productStore.productCount;
   bool get freeShippingFilter => productStore.freeShippingFilter;
   set freeShippingFilter(bool value) => productStore.freeShippingFilter = value;

@@ -14,7 +14,14 @@ class ProductStore = _ProductStore with _$ProductStore;
 
 abstract class _ProductStore with Store {
   @observable
-  List<Product?>? products;
+  List<Product>? products;
+  @computed
+  int get productCount => products!.length;
+
+  @observable
+  List<CartItem>? cartProducts;
+  @computed
+  int get cartProductCount => cartProducts!.length;
 
   @computed
   int get productCount => products!.length;
@@ -23,21 +30,23 @@ abstract class _ProductStore with Store {
   bool freeShippingFilter = false;
 
   @observable
-  bool loading = false;
+  bool loadingProducts = false;
+  @observable
+  bool loadingCartProducts = false;
 
   @action
   Future<void> getProducts([String? search]) async {
     freeShippingFilter = false;
 
     try {
-      loading = true;
+      loadingProducts = true;
       products = await (search == null
           ? GetIt.I.get<IGetProducts>()()
           : GetIt.I.get<IGetProductsByName>()(search));
     } catch (e, s) {
       printException("ProductStore.getProduct", e, s);
     } finally {
-      loading = false;
+      loadingProducts = false;
     }
   }
 
@@ -45,14 +54,65 @@ abstract class _ProductStore with Store {
   Future<void> filterByDeliveryFree([String? search]) async {
     freeShippingFilter = true;
     try {
-      loading = true;
+      loadingProducts = true;
       products = await (search == null
           ? GetIt.I.get<IGetDeliveryFreeProducts>()()
           : GetIt.I.get<IGetDeliveryFreeProductsByName>()(search));
     } catch (e, s) {
       printException("ProductStore.filterByDeliveryFree", e, s);
     } finally {
-      loading = false;
+      loadingProducts = false;
     }
+  }
+
+  @action
+  Future<void> getCartProducts() async {
+    try {
+      loadingCartProducts = true;
+      cartProducts = await GetIt.I.get<IGetCartProducts>()();
+    } catch (e, s) {
+      // printException("ProductStore.getCartProduct", e, s);
+      print(e);
+      print(s);
+    } finally {
+      loadingCartProducts = false;
+    }
+  }
+
+  @action
+  Future<void> getQualities(String productId) async {
+    try {
+      loadingQualities = true;
+      productQualities = await GetIt.I.get<IGetProductQualities>()(productId);
+    } catch (e, s) {
+      // printException("ProductStore.getQualities", e, s);
+      print(e);
+      print(s);
+    } finally {
+      loadingQualities = false;
+    }
+  }
+
+  @action
+  void addToCart(Product product) {
+    cartProducts ??= [];
+
+    cartProducts!.add(CartItem(product: product, quantity: 1));
+  }
+
+  @action
+  void removeFromCart(Product product) {
+    cartProducts!.removeWhere((item) => item.product.id == product.id);
+  }
+
+  @action
+  void clearCart() {
+    cartProducts = [];
+  }
+
+  @action
+  void updateCartProductQuantity(Product product, int quantity) {
+    final index = cartProducts!.indexWhere((p) => p.product.id == product.id);
+    cartProducts![index] = CartItem(product: product, quantity: quantity);
   }
 }

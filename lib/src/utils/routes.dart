@@ -16,9 +16,11 @@ final Map<String, WidgetBuilder> routes = {
       LoginScreen(controller: GetIt.I.get<LoginController>()),
   CreateAccountScreen.routeName: (_) => const CreateAccountScreen(),
   HomeScreen.routeName: (_) => const HomeScreen(),
-  StoreScreen.routeName: (_) => StoreScreen(
-        controller: GetIt.I.get<StoreController>(),
-      ),
-  CartScreen.routeName: (_) => const CartScreen(),
+  StoreScreen.routeName: (_) {
+    return StoreScreen(controller: GetIt.I.get<StoreController>());
+  },
+  CartScreen.routeName: (_) {
+    return CartScreen(controller: GetIt.I.get<CartController>());
+  },
   InkDetailScreen.routeName: (_) => const InkDetailScreen(),
 };

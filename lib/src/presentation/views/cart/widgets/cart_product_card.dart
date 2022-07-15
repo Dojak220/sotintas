@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:sotintas/src/external/models/cart_item.dart';
 import 'package:sotintas/src/utils/custom_colors.dart';
 
 class CartProductCard extends StatefulWidget {
+  final CartItem cartProduct;
+
   const CartProductCard({
     Key? key,
+    required this.cartProduct,
   }) : super(key: key);
 
   @override
